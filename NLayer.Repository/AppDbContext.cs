@@ -9,10 +9,10 @@ namespace NLayer.Repository
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-               
+
         }
 
-        public DbSet<Category> Categories{ get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductFeature> ProductFeatures { get; set; }
 
@@ -20,6 +20,25 @@ namespace NLayer.Repository
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             //modelBuilder.ApplyConfiguration(new ProductConfiguration());
+
+            modelBuilder.Entity<ProductFeature>().HasData(
+                new ProductFeature
+                {
+                    Id = 1,
+                    Color = "Red",
+                    Height = 100,
+                    Width = 100,
+                    ProductId = 1
+                },
+                new ProductFeature
+                {
+                    Id = 2,
+                    Color = "Blue",
+                    Height = 200,
+                    Width = 200,
+                    ProductId = 2
+                }
+            );
             base.OnModelCreating(modelBuilder);
         }
     }
