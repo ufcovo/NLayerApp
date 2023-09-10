@@ -21,6 +21,7 @@ namespace NLayer.Repository
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             //modelBuilder.ApplyConfiguration(new ProductConfiguration());
 
+            // It is not the best practise. This is an example of adding data can be done here as well.
             modelBuilder.Entity<ProductFeature>().HasData(
                 new ProductFeature
                 {
